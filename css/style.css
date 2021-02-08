@@ -1,0 +1,262 @@
+.container {
+    width: 100%;
+    height: 722px;
+    background-color: #0079bf;
+    display:flex;
+    flex-direction: column;
+    
+}
+a{
+    text-decoration: none;
+}
+.header {
+    width: 100%;
+    height: 40px;
+    background-color: #5054576b;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-header {
+    width: 26%;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.right-header{
+    align-items: center;
+    display: flex;
+    justify-content:flex-end;
+    width: 26%;
+    height: 100%;
+}
+.box{
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    width:44%;
+    height: 100%;
+}
+.center-header {
+    display: flex;
+    width: 48%;
+    justify-content: center;
+    align-items: center;
+}
+.home {
+    height: 90%;
+    width: 50px;
+    background-color: #f1f8ff6e;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+
+.board {
+    height: 90%;
+    width: 100px;
+    background-color: #f1f8ff6e;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+.search-box{
+    height: 100%;
+    width: 200px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+
+}
+
+input.search {
+    height: 90%;
+    width: 200px;
+    outline: none;
+    border: none;
+    background-color: #f1f8ff6e;
+    border-radius: 3px;
+    position: relative;
+}
+
+i.fas.fa-search {
+    position: absolute;
+    right: 15px;
+    top: 7px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.center-logo{
+    width: 100px;
+    opacity: .7;
+}
+
+img.center-logo:hover {
+    opacity: 1;
+}
+
+.icon-container{
+    height: 90%;
+    width: 47px;
+    background-color: #f1f8ff6e;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+
+.list {
+    background-color: #e1e1e1;
+    width: 230px;
+    border-radius: 2px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.list-title {
+    height: 30px;
+    color: #2e6fdd;
+    padding: 9px;
+}
+
+.card {
+    background-color: #fff;
+    height: 30px;
+    margin: 5px;
+    display: flex;
+    font-family: sans-serif;
+    padding: 5px;
+    align-items: center;
+    border-radius: 2px;
+    justify-content: space-between;
+}
+.add-card-btn {
+    height: 35px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    background-color: #e6e1e1;
+    font-family: revert;
+    font-size: 14px;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    color: #11142e66;
+}
+
+.add-card-input {
+    height: 35px;
+    border-radius: 2px;
+    outline: none;
+    border: none;
+    background-color: #e6e1e1;
+
+    font-family: revert;
+    font-size: 14px;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    color: #11142e66;
+}
+
+#deleteCard{
+
+    width: 20px;
+    height: 20px;
+    background-color: aqua;
+    color: #000;
+}
+
+.list-container{
+    display: flex;
+    align-items: baseline;
+    
+}
+
+#add-list{
+
+    width:230px;
+    height: 30px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    border-radius: 2px;
+}
+
+.add-list-btn {
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: #02182a5c;
+    color: #fff;
+    padding: 5px;
+    text-align: left;
+    height: 30px;
+    margin: 5px;
+    font-family: sans-serif;
+    padding: 8px;
+    align-items: center;
+    border-radius: 2px;
+}
+.add-list-input {
+    width: 100%;
+    background-color: #fff;
+    height: 30px;
+    outline: none;
+    border: none;
+    margin: 5px;
+    display: flex;
+    font-family: sans-serif;
+    padding: 5px;
+    align-items: center;
+    border-radius: 2px;
+}
+
+.show{
+    display: block;
+}
+
+.hide {
+
+    display: none;
+}
+
+.draggable{
+    cursor: move ;
+    background-color: #e1e1e1;
+    width: 230px;
+    border-radius: 2px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    width: 40px;
+    outline: none;
+    border: 1px solid #00bcd4;
+    background-color: #e0f7fa;
+    font-size: 12px;
+    border-radius: 3px;
+    color: #314884;
+    font-family: serif;
+}
+
+.btnContainer {
+    width: 85px;
+    display: flex;
+    justify-content: space-evenly;
+}
