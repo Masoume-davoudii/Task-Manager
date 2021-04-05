@@ -5,18 +5,19 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=7">
+        <link rel="icon" href="./icons/trello.png">
         <link rel="stylesheet" href="./css/style.css">
         <link rel="stylesheet" href="css/reset.css">
         <link rel="stylesheet" href="css/fa.css">
         
     </head>
-    <body>
+
+    <body  >
 
         <div class="container">
             <header class="header">
                 <left class="left-header">
                     <a href="#" class="home"><svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M3.586 10.414A2 2 0 003 11.828V19a2 2 0 002 2h5a1 1 0 001-1v-6h2v6a1 1 0 001 1h5a2 2 0 002-2v-7.172a2 2 0 00-.586-1.414l-7.707-7.707a1 1 0 00-1.414 0l-7.707 7.707zM13 12a2 2 0 012 2v5h4v-7.172l-7-7-7 7V19h4v-5a2 2 0 012-2h2z" fill="currentColor"></path></svg></a>
-
                     <a href="#" class="board"><svg width="24" height="24" role="presentation" focusable="false" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M3 5a2 2 0 012-2h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm2 1a1 1 0 011-1h4a1 1 0 011 1v10a1 1 0 01-1 1H6a1 1 0 01-1-1V6zm9-1a1 1 0 00-1 1v6a1 1 0 001 1h4a1 1 0 001-1V6a1 1 0 00-1-1h-4z" fill="currentColor"></path></svg>
                     <h3>Boards</h3>
                     </a>
@@ -24,27 +25,56 @@
                         <input class="search"  type="text"/>
                         <i class="fas fa-search"></i>
                     </div>
-                </left>
-                <div class="center-header">
-                
-                    <img class="center-logo" src="/img/trello.png">
                     
+                    <span class="dog-alert"></span>
+                    <span id="clock"></span>
+                </left>
+
+                <div class="center-header">
+                    <img class="center-logo" src="./img/trello1.png">
                 </div>
+
                 <right class="right-header">
+
                     <div class="box">
-                        <a href="#" class="icon-container"><i class="fas fa-plus"></i></a>
-                        <a href="#" class="icon-container"><i class="fas fa-exclamation"></i></a>
-                        <a href="#" class="icon-container"><i class="far fa-bell"></i></a>
+                        <a href="#" onClick= "changeMood()" class="icon-container"><i class="fas fa-moon"></i></a>
+
+                        <div class="palette-container">
+                            <i class="fas fa-palette"></i>
+                            <select id="colors" name=Pallet  onchange="ChangeBackgroundColor(this.value)">
+                                
+                                <option value="#f87eff"  class="selected" style="background-color: #f87eff;"></option>
+                                <option value="#ff7fac"  class="selected" style="background-color: #ff7fac;"></option>
+                                <option value="#ede38c"  class="selected" style="background-color: #ede38c;"></option>
+                                <option value="#ffbf00"  class="selected" style="background-color:#ffbf00;"></option>
+                                <option value="#e1bee7"  class="selected" style="background-color:#e1bee7;"></option>
+                                <option value="#c0ca33"  class="selected" style="background-color:#c0ca33;"></option>
+                            </select>
+                        </div>
+                    
+                            
+            
+                    <button onclick="playMusic()" id="playaudio" class="icon-container" type="button" ><i class="fas fa-music"></i></button>
+                    <label for="set-image" class="input-label "  ><i class="far fa-image"></i></label>
+                    <input type='file' id='set-image' name="background-image"  />
+                    
                     </div>
                 </right>
             </header>
+            
             <div class ="list-container">
          
             </div>
+            </div>
+            
+           
+      
         <script src ="js/helper.js"></script>
         <script src ="js/element.js"></script>
-       <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js" integrity="sha512-5x7t0fTAVo9dpfbp3WtE2N6bfipUwk7siViWncdDoSz2KwOqVC1N9fDxEOzk0vTThOua/mglfF8NO7uVDLRC8Q==" crossorigin="anonymous"></script>-->
-        <script src ="js/script.js" defer></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.13.0/Sortable.min.js"
+         integrity="sha512-5x7t0fTAVo9dpfbp3WtE2N6bfipUwk7siViWncdDoSz2KwOqVC1N9fDxEOzk0vTThOua/mglfF8NO7uVDLRC8Q==" crossorigin="anonymous"></script>
+         <script src ="js/Utiles.js" ></script>
+        <script src ="js/script.js" ></script>
         <script src ="js/app.js"></script>
   
     </body>

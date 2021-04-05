@@ -1,10 +1,42 @@
+body{
+    width: 100%;
+    height: 100%;
+    background-color: #65dfca;
+}
 .container {
     width: 100%;
-    height: 722px;
-    background-color: #0079bf;
+    height: 760px; 
     display:flex;
     flex-direction: column;
     
+}
+*{
+        font-family: cursive;
+}
+
+.container{
+   background-image:url('');
+   background-size:cover;
+   background-position: center;
+   height: 760px; width:100%;
+  
+}
+#set-image{
+    border-style: none;
+    outline: none;
+    width: 200px;
+    
+}
+.input-label {
+    height: 90%;
+    width: 33px;
+    background-color: rgba(241, 248, 255, 0.43);
+    color: rgb(255, 255, 255);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
 }
 a{
     text-decoration: none;
@@ -19,7 +51,7 @@ a{
 }
 
 .left-header {
-    width: 26%;
+    width: 33%;
     height: 100%;
     align-items: center;
     display: flex;
@@ -31,19 +63,19 @@ a{
     align-items: center;
     display: flex;
     justify-content:flex-end;
-    width: 26%;
+    width: 16%;
     height: 100%;
 }
-.box{
+.box {
     align-items: center;
     display: flex;
     justify-content: space-evenly;
-    width:44%;
+    width: 60%;
     height: 100%;
 }
 .center-header {
     display: flex;
-    width: 48%;
+    width:51%;
     justify-content: center;
     align-items: center;
 }
@@ -97,6 +129,68 @@ i.fas.fa-search {
     color: #fff;
 }
 
+.dog-alert{
+    background-image: url("../img/dog.png");
+    background-size: 33px 41px;
+    display: block;
+    margin-top: 0;
+    margin-top: 15px;
+    height: 20px;
+    transition: margin-top 85ms ease-in,height 85ms ease-in;
+    width: 33px;
+}
+.dog-alert:hover{
+    
+    height: 40px;
+    margin-top: 1px;
+}
+
+#clock {
+    width: 100px;
+    color: #fff;
+    font-family: cursive;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.dark-mode {
+  background-color: rgb(21, 48, 66) !important;
+  color: white;
+}
+
+#colors {
+    width: 33px;
+    height: 90%;
+    border: none;
+    border-radius: 5px;
+    background-color: #f1f8ff6e;
+    color: #fff;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+}
+
+#playaudio {
+    border: none;
+    outline: none;
+}
+i.fas.fa-palette {
+    position: absolute;
+    color: #fff;
+    font-size: 20px;
+}
+.palette-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+i.far.fa-image {
+    font-size: 20px;
+}
 .center-logo{
     width: 100px;
     opacity: .7;
@@ -108,7 +202,7 @@ img.center-logo:hover {
 
 .icon-container{
     height: 90%;
-    width: 47px;
+    width: 33px;
     background-color: #f1f8ff6e;
     color: #fff;
     display: flex;
@@ -124,20 +218,29 @@ img.center-logo:hover {
     margin: 10px;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
+    white-space: nowrap;
 }
 
 .list-title {
-    height: 30px;
+    height: 46px;
+    overflow: auto;
     color: #2e6fdd;
     padding: 9px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .card {
     background-color: #fff;
-    height: 30px;
+    width: 100%;
     margin: 5px;
+    height: 35px;
+    overflow-wrap: anywhere;
+    overflow: auto;
     display: flex;
-    font-family: sans-serif;
+    color: #2a242f;
+    font-family: cursive;
     padding: 5px;
     align-items: center;
     border-radius: 2px;
@@ -149,7 +252,7 @@ img.center-logo:hover {
     outline: none;
     border: none;
     background-color: #e6e1e1;
-    font-family: revert;
+    font-family: cursive;
     font-size: 14px;
     justify-content: flex-start;
     align-items: center;
@@ -158,13 +261,12 @@ img.center-logo:hover {
 }
 
 .add-card-input {
-    height: 35px;
+    height: 55px;
     border-radius: 2px;
     outline: none;
     border: none;
     background-color: #e6e1e1;
-
-    font-family: revert;
+    font-family: cursive;
     font-size: 14px;
     justify-content: flex-start;
     align-items: center;
@@ -183,6 +285,8 @@ img.center-logo:hover {
 .list-container{
     display: flex;
     align-items: baseline;
+    overflow: auto;
+    flex:1;
     
 }
 
@@ -197,7 +301,8 @@ img.center-logo:hover {
 }
 
 .add-list-btn {
-    width: 100%;
+    width: 230px;
+    flex-shrink: 0px;
     outline: none;
     border: none;
     background-color: #02182a5c;
@@ -206,20 +311,21 @@ img.center-logo:hover {
     text-align: left;
     height: 30px;
     margin: 5px;
-    font-family: sans-serif;
+    font-family: cursive;
     padding: 8px;
     align-items: center;
     border-radius: 2px;
 }
 .add-list-input {
-    width: 100%;
+    width: 230px;
+    flex-shrink: 0px;
     background-color: #fff;
     height: 30px;
     outline: none;
     border: none;
     margin: 5px;
     display: flex;
-    font-family: sans-serif;
+    font-family: cursive;
     padding: 5px;
     align-items: center;
     border-radius: 2px;
@@ -234,29 +340,77 @@ img.center-logo:hover {
     display: none;
 }
 
-.draggable{
-    cursor: move ;
+.list{
+    max-height: 660px;
     background-color: #e1e1e1;
     width: 230px;
+    flex-shrink: 0;
     border-radius: 2px;
     margin: 10px;
     display: flex;
     flex-direction: column;
-}
-
+    overflow: auto;}
 .btn {
     width: 40px;
     outline: none;
-    border: 1px solid #00bcd4;
-    background-color: #e0f7fa;
-    font-size: 12px;
+    border: none;
+    background-image: linear-gradient( #f9f8f8, #d6cfcf);
+    font-size: 11px;
     border-radius: 3px;
-    color: #314884;
-    font-family: serif;
+    color: rgb(49, 72, 132);
+    font-family: cursive;
 }
 
 .btnContainer {
     width: 85px;
     display: flex;
     justify-content: space-evenly;
+}
+
+.textContainer {
+    background-color: #fff;
+    width: 90%;
+    margin-left: 5%;
+    border-radius: 3px;
+    display: flex;
+    font-family: cursive;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.span-card {
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    color: #09589d;
+    font-family: cursive;
+    height: 55px;
+    overflow: auto;
+    overflow-wrap: anywhere;
+    padding: 10px;
+    max-height: 200px;
+}
+.input-card {
+    border: none;
+    outline: none;
+    width: 100%;
+    height: 55px;
+    font-family: cursive;
+    background-color: #e9ffff;
+    padding: 12px;
+    overflow-wrap: anywhere;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.delete-list {
+    background-color: #e1e1e1;
+    width: 25px;
+    height: 20px;
+    outline: none;
+    border: none;
+    color: #a61a2bd1;
+    font-size: 15px;
 }

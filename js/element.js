@@ -1,4 +1,5 @@
-//==============element Generator===========================================
+//==================================element Generator============================
+
 function createElement(tagName, attribute,content){
 
     var el = document.createElement(tagName);
@@ -17,47 +18,79 @@ function createElement(tagName, attribute,content){
         return el;
     }
 
+//===============================createListNode================================
+
 function createListNode(title){
 
-    var listElement = createElement('div' ,{ class:'list draggable' , draggable:'true'});
+    var listElement = createElement('div' ,{ class:'list'});
     var ListTitleNode = createElement('h3', {class : 'list-title'},title);
+    var deleteList = createElement('button',{class:'delete-list'});
+    var deleteIcon =  createElement('i',{class:"fas fa-times"})
+    deleteList.appendChild(deleteIcon);
     var listItemNode = createElement('ul',{class:'list-Items'});
     var addCardButtonNode = createElement('button',{class:"add-card-btn show"},'Add a Card ...');
     var addCardInputElement = createElement('input', {class:"add-card-input hide" , type:'text',placeholder:'Enter a card name...'});
 
-    
+    ListTitleNode.appendChild(deleteList);
     listElement.appendChild(ListTitleNode );
     listElement.appendChild(addCardButtonNode);
     listElement.appendChild(addCardInputElement);
 
+
+//================================ add List ====================================
+
     addCardButtonNode.addEventListener('click',function(){
         addCardButtonNode.classList.remove('show');
         addCardButtonNode.classList.add('hide');
-        console.log("1");
+        
         addCardInputElement.classList.remove('hide');
         addCardInputElement.classList.add('show');
         addCardInputElement.focus();
-        console.log("2");
+      
 
         
 
     });
 
+//==============================Delete List======================================
+
+    deleteIcon.addEventListener('click' , (event)=>{
+                
+                if(event.target.tagName === 'I' ){
+                  
+                    const i = event.target;
+                    const button = i.parentNode;
+                    const title = button.parentNode;
+                    const div= title.parentNode;
+                
+                    if (i.className === 'fas fa-times') {
+                        div.remove();
+                    
+                        }
+                }
+
+        });
     
+//================================Insert Card======================================
+
     var insertionPosition = createElement('ul',{class:'list-Items'}); //<ul class="list-items"><ul>
     ListTitleNode.after(insertionPosition);
-     addCardInputElement.addEventListener("keyup", function(e){
+    addCardInputElement.addEventListener("keyup", function(e){
          
         if(e.keyCode === 13){
-            var newCard = createElement('li' , {class:'card'}, addCardInputElement.value);
+            var newLi = createElement("li" ,{class:"textContainer" , draggable:'true'});
+          
+            if(addCardInputElement.value !==""){
+            var newCard = createElement('span' , {class:'card' }, addCardInputElement.value);
+            newLi.appendChild(newCard);
             var btnContainer = createElement('div',{class:'btnContainer'} )
             var deleteBtn = createElement('button' ,{class:'deleteCard btn'} , 'delete' );
             btnContainer.appendChild(deleteBtn );
             var editBtn = createElement('button' ,{class:'editCard btn'} , 'edit' );
             btnContainer.appendChild(editBtn );
 
-            newCard.appendChild(btnContainer);
-            insertionPosition.appendChild(newCard);//<ul class="list-items"><li></li><ul>
+            newLi.appendChild(btnContainer);
+            insertionPosition.appendChild(newLi );//<ul class="list-items"><li></li><ul>
           
             addCardInputElement.classList.remove('show');
             addCardInputElement.classList.add('hide');
@@ -65,6 +98,8 @@ function createListNode(title){
 
             addCardButtonNode.classList.remove('hide');
             addCardButtonNode.classList.add('show');
+
+//===================================Delete Card===================================
 
             deleteBtn.addEventListener('click' , (event)=>{
                 if(event.target.tagName === 'BUTTON'){
@@ -79,37 +114,87 @@ function createListNode(title){
 
         });
 
+//====================================Edit Card======================================
             editBtn.addEventListener('click',(event)=>{
                 if(event.target.tagName ==='BUTTON'){
-                    const li = ul.firstElementChild;
-                    console.log(li);
-                    const input = createElement('input', {class:"add-card-input " , type:'text',placeholder:'Enter a card name...'});
+                    const button = event.target;
+                    const btnContainer = button.parentNode;
+                    const li = btnContainer.parentNode;
+                    const ul = li.parentNode;
+                   if(editBtn.textContent==='edit'){
+                    const span = li.firstElementChild;
+                
+                    const input = createElement('input', {class:"input-card " , type:'text'});
+                    input.value = span.textContent;
+                    li.insertBefore(input,span);
+                    li.removeChild(span);
                     
-                    editBtn.content ='save';
-
-                }else if(editBtn.content === 'save'){
-
-                    const li = ul.firstElementChild;
-                    editBtn.content ='edit';
+                    editBtn.textContent ='save';
+                    
+                }else if(editBtn.textContent === 'save'){
+                
+                    const input = li.firstElementChild;
+                    const span = createElement("span",{class:"span-card " , type:'text'} );
+                    span.textContent = input.value;
+                    li.insertBefore(span,input);
+                    li.removeChild(input);
+                    editBtn.textContent ='edit';
 
                 }
-            })
+            }})
 
 
         }
 
+ }
+//==================================Drag & Drop  Doesn't work good =================================
+
+        
+        const items = document.querySelectorAll(".textContainer");
+        const lists = document.querySelectorAll(".list-Items");
+        let dragged=null;
+        
+
+        for(let i =0 ;i<items.length;i++){
+            const item = items[i];
+            item.addEventListener('dragstart',function(){
+               
+                dragged=item; 
+                setTimeout(function(){
+                    item.style.display='none'; 
+                },0);});
+            
+            item.addEventListener("dragend",function(){
+                setTimeout(function(){
+                    dragged.style.display='block';
+                    dragged=null;
+                },0);});
+
+            for(let j=0; j<lists.length;j++){
+                    const list=lists[j];
+                    list.addEventListener('dragover',function(e){
+                        e.preventDefault();});
+                    list.addEventListener('dragenter',function(e){
+                        e.preventDefault()
+                        
+                    });
+                    list.addEventListener('drop',function(e){
+                        this.append(dragged);
+                      
+
+                    });
+                }
+    }
+
      
     });
-
- 
-
     return listElement;
 };
 
-console.log(createListNode("backlog"));
 
 
-//====================Card==========================================================
+
+//===============================Create Card Function==============================
 
 function createCardNode(text){
 
@@ -121,7 +206,7 @@ function createCardNode(text){
 };
 
 
-//====================Add a List CTA=================================================
+//=================================Add a List CTA=================================
 
 function createAddListCTANode(){
 
@@ -148,6 +233,9 @@ function createAddListCTANode(){
     addListInputElement.addEventListener("keyup", function(e){
 
         if(e.keyCode === 13){
+            
+               
+            if(addListInputElement.value !==""){
             var newList = createListNode(addListInputElement.value);
             var insertionPosition = document.getElementById('add-list');
             insertionPosition.before(newList);
@@ -160,99 +248,16 @@ function createAddListCTANode(){
             CTAButtonElement.classList.remove('hide');
             CTAButtonElement.classList.add('show');
 
-        }
+        }}
     });
 
+  
+
+    
     return containerElement;
 
 
 };
 
-console.log(createAddListCTANode());
-
-//====================Delete=================
 
 
-
-
-
-
-/*
-//==================list ==================
-
-function createListTitleNode(title){
-    var titleElement = document.createElement('h3');
-    titleElement.classList.add('list-title');
-    titleElement.innerText = title;
-
-    return titleElement;
-
-}
-
-console.log(createListTitleNode("To Do"));
-
-function createListItemNode(){
-    var unorderedListElement = document.createElement('ul');
-    unorderedListElement.classList.add('list-Items');
-
-    return unorderedListElement;
-
-}
-
-console.log(createListItemNode());
-
-function createAddCardButtonNode(){
-
-    var buttonElement = document.createElement('button');
-    buttonElement.classList.add('add-card-btn');
-    buttonElement.innerText = 'Add a Card ...';
-
-    return buttonElement;
-
-}
-
-console.log( createAddCardButtonNode());
-
-//===================Primary==================
-
-function createListNode(title){
-
-    var listElement = document.createElement('div');
-    listElement.classList.add('list');
-
-    listElement.appendChild(createListTitleNode(title));
-    listElement.appendChild(createListItemNode());
-    listElement.appendChild(createAddCardButtonNode());
-
-    return listElement;
-}
-
-console.log(createListNode("backlog"));
-
-
-function createAddListCTANode(){
-
-    var containerElement = document.createElement('div');
-    containerElement.setAttribute('id' , 'add-list');
-
-    var CTAButtonElement = document.createElement('button');
-    CTAButtonElement.setAttribute('class' ,'add-list-btn show');
-    CTAButtonElement.innerText = 'Add a List...';
-
-    var addListInputElement = document.createElement('input');
-    addListInputElement.setAttribute('class', 'add-list-input hide');
-    addListInputElement.setAttribute('type' ,'text');
-    addListInputElement.setAttribute('placeholder' , 'Enter a list name ...');
-
-    containerElement.appendChild(CTAButtonElement);
-    containerElement.appendChild(addListInputElement);
-
-    return containerElement;
-
-
-}
-
-console.log(createAddListCTANode());
-
-
-*/
